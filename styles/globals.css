@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'Open24Display';
+  src: url('/open24display.ttf') format('truetype');
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+/*
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}*/
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  color: rgb(var(--foreground-rgb));/*
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));*/
+}
+
+.voltmetro{
+  width: 300px;
+  height: 500px;
+  border: 10px solid #a00;
+  outline: 10px solid #555;
+  outline-offset: -1px;
+  background-color: #777;
+  box-sizing: border-box;
+  padding: 30px;
+  border-radius: 50px;
+  
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 0px 20px #000;
+}
+
+.voltmetro::after{
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50px;
+  
+  border: 10px solid #f00;
+  outline: 10px solid #a00;
+  outline-style: dashed;
+  box-shadow: 0px 0px 10px #000a;
+}
+
+.voltmetro > :last-child{
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.voltmetro > :last-child > * {
+  margin: 5px;
+  color: #0000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px #000a;
+  background: radial-gradient(#444, #111);
+}
+
+.voltmetro > :last-child > :first-child {
+  
+  border: 5px solid #f00;
+}
+.voltmetro > :last-child > :last-child {
+  border: 5px solid #000;
+}
+.voltmetro > * {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}
+.voltmetro > :first-child{
+  box-shadow: inset 0px 0px 5px #0005;
+  font-family: 'Open24Display', sans-serif;
+  border: 10px solid #ccc;
+  border-top-color: #999;
+  border-left-color: #aaa;
+  border-right-color: #aaa;
+  /*border-style: dotted;*/
+  height: 20%;
+  border-radius: 10px;
+  background-color: #77f;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  color: #fff;
+}
+
+.voltmetro > :nth-child(2){
+  display: flex;
+  text-align: center;
+  height: 200px;
+  width: 200px!important;
+  border: 5px solid #444;
+  outline: 5px solid #444;
+  outline-style: dashed;
+  outline-offset: -3px;
+  font-size: xx-large;
+  background: #222;
+  border-radius: 50%;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  box-shadow: 0px 0px 10px #000a;
+}
+.voltmetro > :nth-child(2) > :last-child{
+  width: 50px;
+  height: 100px;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 100px solid #444;
+
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: larger;
+  color: #fff;
+}
