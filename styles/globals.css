@@ -8,6 +8,23 @@
   src: url('/open24display.ttf') format('truetype');
 }
 
+body {
+  --s: 100px; /* control the size */
+  --c1: #cccccc;
+  --c2: #ffb9b9;
+  
+  --_s: calc(2*var(--s)) calc(2*var(--s));
+  --_g: var(--_s) conic-gradient(at 40% 40%,#0000 75%,var(--c1) 0);
+  --_p: var(--_s) conic-gradient(at 20% 20%,#0000 75%,var(--c2) 0);
+  background:
+    calc( .9*var(--s)) calc( .9*var(--s))/var(--_p),
+    calc(-.1*var(--s)) calc(-.1*var(--s))/var(--_p),
+    calc( .7*var(--s)) calc( .7*var(--s))/var(--_g),
+    calc(-.3*var(--s)) calc(-.3*var(--s))/var(--_g),
+    conic-gradient(from 90deg at 20% 20%,var(--c2) 25%,var(--c1) 0) 
+     0 0/var(--s) var(--s);
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -26,14 +43,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
-  color: rgb(var(--foreground-rgb));/*
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));*/
+  padding-top: 50px;
+  color: rgb(var(--foreground-rgb));
 }
 
 .voltmetro{
@@ -71,51 +82,58 @@ body {
   box-shadow: 0px 0px 10px #000a;
 }
 
-.voltmetro > :last-child{
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.voltmetro > :last-child > * {
-  margin: 5px;
-  color: #0000;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  box-shadow: 0px 0px 5px #000a;
-  background: radial-gradient(#444, #111);
-}
-
-.voltmetro > :last-child > :first-child {
-  
-  border: 5px solid #f00;
-}
-.voltmetro > :last-child > :last-child {
-  border: 5px solid #000;
-}
-.voltmetro > * {
-  width: 100%;
+/*
+.voltmetro > :first-child::after{
+  position: absolute;
+  right: 0px;
+  content: "88.888 V";
+  font-family: 'Open24Display', sans-serif;
+  height: 20%;
+  box-sizing: border-box;
   display: flex;
-  justify-content: center;
-  
-}
+  text-align: end;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 60px;
+  font-size: 50px;
+  color: rgb(68, 68, 255);
+  z-index: -1;
+}*/
 .voltmetro > :first-child{
+  
   box-shadow: inset 0px 0px 5px #0005;
   font-family: 'Open24Display', sans-serif;
   border: 10px solid #ccc;
   border-top-color: #999;
   border-left-color: #aaa;
   border-right-color: #aaa;
-  /*border-style: dotted;*/
   height: 20%;
   border-radius: 10px;
   background-color: #77f;
   box-sizing: border-box;
   display: flex;
+  text-align: end;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+  z-index: 5;
   font-size: 50px;
   color: #fff;
+}
+.voltmetro > :first-child::before{
+  content: "ඞ NANDBU-60V103";
+  position: absolute;
+  bottom: calc(100% - 20% - 20% + 10px);
+  right: 30px;
+  font-family: consolas, monospace;
+  height: 20%;
+  box-sizing: border-box;
+  display: flex;
+  text-align: end;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: large;
+  color: rgb(65, 65, 65);
 }
 
 .voltmetro > :nth-child(2){
@@ -149,4 +167,35 @@ body {
 h1 {
   font-size: larger;
   color: #fff;
+}
+
+.voltmetro > :last-child{
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.voltmetro > :last-child > * {
+  text-align: center;
+  align-items: center;
+  margin: 5px;
+  color: #fff0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px #000a;
+  background: radial-gradient(#444, #111);
+}
+
+.voltmetro > :last-child > :first-child {
+  
+  border: 5px solid #f00;
+}
+.voltmetro > :last-child > :last-child {
+  border: 5px solid #000;
+}
+.voltmetro > * {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
 }
